@@ -17,7 +17,7 @@ save_interval = 15
 
 
 def m3u8_to_save_img(video, name, frame_interval):
-    current_time = datetime.now().replace(microsecond=1)
+    current_time = datetime.now().replace(microsecond=0)
     frame_count = 0
     saved_count = 0
 
@@ -44,7 +44,7 @@ def m3u8_to_save_img(video, name, frame_interval):
             cv2.imwrite(frame_filename, frame, [int(cv2.IMWRITE_JPEG_QUALITY), 90])
             print(f'Saved {frame_filename}')
             saved_count += 1
-            current_time = current_time + timedelta(seconds=0.5)
+            current_time = current_time + timedelta(seconds=0.500001)
 
         frame_count += 1
 
