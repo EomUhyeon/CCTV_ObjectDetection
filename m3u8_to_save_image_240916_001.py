@@ -7,10 +7,10 @@ from datetime import datetime, timedelta
 
 # video_url = 'https://strm2.spatic.go.kr/live/152.stream/playlist.m3u8'
 
-# 서부역 입구 삼거리
+# 서부역 입구 삼거리 seobuyeog ibgu samgeoli
 video_url = 'https://wowza.cheonan.go.kr/live/cctv002.stream/playlist.m3u8'
 
-video_name = 'test'
+video_name = 'seobuyeog ibgu samgeoli'
 
 # 프레임 저장 간격
 save_interval = 15
