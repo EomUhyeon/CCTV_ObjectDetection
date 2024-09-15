@@ -12,7 +12,7 @@ video_name = 'test_002'
 save_interval = 15
 
 
-def m3u8_to_img(video, name, frame_interval):
+def m3u8_to_save_img(video, name, frame_interval):
     current_time = datetime.now().replace(microsecond=1)
     frame_count = 0
     saved_count = 0
@@ -48,5 +48,5 @@ def m3u8_to_img(video, name, frame_interval):
 
 
 if __name__ == "__main__":
-    m3u8_to_img(video_url, video_name, save_interval)
+    m3u8_to_save_img(video_url, video_name, save_interval)
     
