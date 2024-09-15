@@ -41,7 +41,7 @@ def m3u8_to_save_img(video, name, frame_interval):
         if frame_count % frame_interval == 0:
             formatted_time = current_time.strftime("%Y-%m-%d_%H-%M-%S-%f")
             frame_filename = os.path.join(save_dir, f'{formatted_time}.jpg')
-            cv2.imwrite(frame_filename, frame, [int(cv2.IMWRITE_JPEG_QUALITY), 80])
+            cv2.imwrite(frame_filename, frame, [int(cv2.IMWRITE_JPEG_QUALITY), 90])
             print(f'Saved {frame_filename}')
             saved_count += 1
             current_time = current_time + timedelta(seconds=0.5)
