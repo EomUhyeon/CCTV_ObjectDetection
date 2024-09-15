@@ -4,9 +4,13 @@ from datetime import datetime, timedelta
 
 
 # .m3u8 파일 URL
-video_url = 'https://strm2.spatic.go.kr/live/152.stream/playlist.m3u8'
 
-video_name = 'test_002'
+# video_url = 'https://strm2.spatic.go.kr/live/152.stream/playlist.m3u8'
+
+# 서부역 입구 삼거리
+video_url = 'https://wowza.cheonan.go.kr/live/cctv002.stream/playlist.m3u8'
+
+video_name = 'test'
 
 # 프레임 저장 간격
 save_interval = 15
@@ -35,7 +39,8 @@ def m3u8_to_save_img(video, name, frame_interval):
             break
 
         if frame_count % frame_interval == 0:
-            frame_filename = os.path.join(save_dir, f'{current_time}.jpg')
+            formatted_time = current_time.strftime("%Y-%m-%d_%H-%M-%S-%f")
+            frame_filename = os.path.join(save_dir, f'{formatted_time}.jpg')
             cv2.imwrite(frame_filename, frame, [int(cv2.IMWRITE_JPEG_QUALITY), 80])
             print(f'Saved {frame_filename}')
             saved_count += 1
