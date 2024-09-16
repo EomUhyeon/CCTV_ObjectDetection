@@ -2,7 +2,7 @@ import cv2
 import time
 
 # .m3u8 파일 URL (스트리밍 소스)
-video_url = 'https://strm2.spatic.go.kr/live/152.stream/playlist.m3u8'
+video_url = 'http://211.34.248.240:1935/live/T065.stream/playlist.m3u8'
 
 # 비디오 캡처 객체 생성
 cap = cv2.VideoCapture(video_url)
