@@ -14,7 +14,7 @@ from datetime import datetime, timedelta
 # video_url = 'https://wowza.cheonan.go.kr/live/cctv002.stream/playlist.m3u8'
 # video_name = 'seobuyeog_ibgu_samgeoli'
 # save_interval = 15
-# save_quality = 80
+# save_quality = 90
 
 # 학성 중학교 hagseong junghaggyo
 video_url = 'http://211.34.248.240:1935/live/T065.stream/playlist.m3u8'
