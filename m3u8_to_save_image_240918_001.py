@@ -1,7 +1,7 @@
 import cv2
 import os
 import time
-from datetime import datetime, timedelta
+from datetime import datetime
 
 
 # test
@@ -74,4 +74,3 @@ def m3u8_to_save_img(video, name, interval, quality):
 
 if __name__ == "__main__":
     m3u8_to_save_img(video_url, video_name, save_interval, save_quality)
-
