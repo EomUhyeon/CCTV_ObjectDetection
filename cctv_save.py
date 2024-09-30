@@ -4,32 +4,13 @@ import time
 from datetime import datetime
 
 
-# test
-# video_url = 'https://strm2.spatic.go.kr/live/152.stream/playlist.m3u8'
-# video_name = 'test'
-# save_interval = 15
-# save_quality = 80
-
-# 서부역 입구 삼거리 seobuyeog ibgu samgeoli
-# video_url = 'https://wowza.cheonan.go.kr/live/cctv002.stream/playlist.m3u8'
-# video_name = 'seobuyeog_ibgu_samgeoli'
-# save_interval = 15
-# save_quality = 90
-
-# 학성 중학교 hagseong junghaggyo
-video_url = 'http://211.34.248.240:1935/live/T065.stream/playlist.m3u8'
-video_name = 'hagseong_junghaggyo'
-save_interval = 10
-save_quality = 90
-
-
-def m3u8_to_save_img(video, name, interval, quality):
+def cctv_save(video_url, video_name, save_interval, save_quality, cctv_img_queue, cctv_to_yolo_queue):
     frame_count = 0
     current_day = None
 
     while True:
         try:
-            cap = cv2.VideoCapture(video)
+            cap = cv2.VideoCapture(video_url)
             if not cap.isOpened():
                 print("스트리밍 소스를 열 수 없습니다. 다시 시도합니다...")
                 time.sleep(1)
@@ -48,19 +29,21 @@ def m3u8_to_save_img(video, name, interval, quality):
                 # 날짜 변경 폴더 생성
                 if current_day != today:
                     current_day = today
-                    save_dir = f'./{name}/{current_day}'
+                    save_dir = f'./{video_name}/CCTV/{current_day}'
                     if not os.path.exists(save_dir):
                         os.makedirs(save_dir)
                         print(f'{save_dir} 저장 폴더 생성')
 
-                # 15프레임마다 한 장 저장
-                if frame_count % interval == 0:
+                # 프레임 저장 및 GUI에 이미지 경로 전달
+                if frame_count % save_interval == 0:
                     current_time = datetime.now()
                     formatted_time = current_time.strftime("%Y-%m-%d_%H-%M-%S_%f")
                     frame_filename = os.path.join(save_dir, f'{formatted_time}.jpg')
-                    cv2.imwrite(frame_filename, frame, [int(cv2.IMWRITE_JPEG_QUALITY), quality])
+                    cv2.imwrite(frame_filename, frame, [int(cv2.IMWRITE_JPEG_QUALITY), save_quality])
                     print(f'Saved {frame_filename}')
-                    frame_count = frame_count - interval
+                    cctv_img_queue.put(frame_filename)
+                    cctv_to_yolo_queue.put(frame_filename)
+                    frame_count = frame_count - save_interval
 
                 frame_count += 1
 
@@ -69,8 +52,4 @@ def m3u8_to_save_img(video, name, interval, quality):
 
         except Exception as e:
             print(f"에러 발생: {e}, 5초 후 다시 시도합니다...")
-            time.sleep(5)  # 5초 대기 후 다시 시도
-
-
-if __name__ == "__main__":
-    m3u8_to_save_img(video_url, video_name, save_interval, save_quality)
+            time.sleep(5)

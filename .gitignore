@@ -4,9 +4,10 @@
 # 가상환경
 venv/
 
-# 크롬 드라이버
-chromedriver-win64/
+# 멀티 프로세싱
+__pycache__/
 
 #로컬 저장소
 save/
+runs/
 hagseong_junghaggyo/
