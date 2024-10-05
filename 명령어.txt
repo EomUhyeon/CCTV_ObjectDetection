@@ -1,6 +1,9 @@
 # pyside 디자이너 실행
 pyside6-designer
 
+# 라벨링 프로그램
+labelImg
+
 # 쿠다 설치 명령어
 pip install torch==2.4.1+cu118 torchvision==0.19.1+cu118 torchaudio==2.4.1+cu118 --index-url https://download.pytorch.org/whl/cu118
 pip uninstall torchvision

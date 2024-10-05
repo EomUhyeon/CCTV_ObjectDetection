@@ -68,11 +68,11 @@ def process_batch(model, image_batch, image_paths):
             original_img_path = os.path.join(original_folder, os.path.basename(img_file))
             cv2.imwrite(original_img_path, image_batch[i])
 
-            # 검출된 결과 그리기
+            # 검출 결과 그리기
             result_img = result.plot()
             result_img_path = os.path.join(output_folder, os.path.basename(img_file))
 
-            # 결과 이미지 저장
+            # 검출 결과 이미지 저장
             cv2.imwrite(result_img_path, result_img)
             yolo_img_queue.put(result_img_path)
 

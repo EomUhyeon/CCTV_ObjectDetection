@@ -3,10 +3,10 @@ import cv2
 import shutil
 
 # 경로 설정
-input_image_dir = "data/electric_scooter/240921_001/detect human.v5i.yolov9/train/images"  # 입력 이미지 폴더 경로
-input_label_dir = "data/electric_scooter/240921_001/detect human.v5i.yolov9/train/labels"  # 입력 라벨 폴더 경로
-output_image_dir = "path_to_output_images"  # 출력 이미지 저장 폴더 경로
-output_label_dir = "path_to_output_labels"  # 출력 라벨 저장 폴더 경로
+input_image_dir = "dataset/images/train"  # 입력 이미지 폴더 경로
+input_label_dir = "dataset/labels/train"  # 입력 라벨 폴더 경로
+output_image_dir = "train_images"  # 출력 이미지 저장 폴더 경로
+output_label_dir = "train_labels"  # 출력 라벨 저장 폴더 경로
 
 # YOLO 형식의 라벨을 실제 이미지 좌표로 변환하여 그리는 함수
 def draw_labels(image, label_path):
