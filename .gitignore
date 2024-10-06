@@ -10,6 +10,6 @@ __pycache__/
 #로컬 저장소
 save/
 runs/
-data_processing/
+#data_processing/
 hagseong_junghaggyo/
 seobuyeog_ibgu_samgeoli/
